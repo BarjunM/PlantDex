@@ -1,0 +1,282 @@
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
+
+export interface Database {
+  public: {
+    Tables: {
+      user_profiles: {
+        Row: {
+          id: string
+          username: string | null
+          avatar_url: string | null
+          created_at: string
+          updated_at: string
+          streak_count: number
+          streak_last_date: string | null
+          total_distance: number
+          total_plants_identified: number
+          home_location?: Json | null // Added this field
+        }
+        Insert: {
+          id: string
+          username?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          updated_at?: string
+          streak_count?: number
+          streak_last_date?: string | null
+          total_distance?: number
+          total_plants_identified?: number
+          home_location?: Json | null // Added this field
+        }
+        Update: {
+          id?: string
+          username?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          updated_at?: string
+          streak_count?: number
+          streak_last_date?: string | null
+          total_distance?: number
+          total_plants_identified?: number
+          home_location?: Json | null // Added this field
+        }
+      }
+      plants: {
+        Row: {
+          id: string
+          user_id: string
+          common_name: string
+          scientific_name: string
+          date_found: string
+          location: string | null
+          location_lat: number | null
+          location_lng: number | null
+          image_url: string | null
+          edible: boolean
+          poisonous: boolean
+          medicinal: boolean
+          description: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          common_name: string
+          scientific_name: string
+          date_found?: string
+          location?: string | null
+          location_lat?: number | null
+          location_lng?: number | null
+          image_url?: string | null
+          edible?: boolean
+          poisonous?: boolean
+          medicinal?: boolean
+          description?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          common_name?: string
+          scientific_name?: string
+          date_found?: string
+          location?: string | null
+          location_lat?: number | null
+          location_lng?: number | null
+          image_url?: string | null
+          edible?: boolean
+          poisonous?: boolean
+          medicinal?: boolean
+          description?: string | null
+          created_at?: string
+        }
+      }
+      plant_identifications: {
+        Row: {
+          id: string
+          user_id: string
+          image_url: string | null
+          plant_data: Json | null
+          created_at: string
+          saved_to_collection: boolean
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          image_url?: string | null
+          plant_data?: Json | null
+          created_at?: string
+          saved_to_collection?: boolean
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          image_url?: string | null
+          plant_data?: Json | null
+          created_at?: string
+          saved_to_collection?: boolean
+        }
+      }
+      achievements: {
+        Row: {
+          id: string
+          name: string
+          description: string
+          icon: string
+          category: string
+          requirement_count: number
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          description: string
+          icon: string
+          category: string
+          requirement_count: number
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string
+          icon?: string
+          category?: string
+          requirement_count?: number
+          created_at?: string
+        }
+      }
+      user_achievements: {
+        Row: {
+          id: string
+          user_id: string
+          achievement_id: string
+          progress: number
+          completed: boolean
+          completed_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          achievement_id: string
+          progress?: number
+          completed?: boolean
+          completed_at?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          achievement_id?: string
+          progress?: number
+          completed?: boolean
+          completed_at?: string | null
+          created_at?: string
+        }
+      }
+      trails: {
+        Row: {
+          id: string
+          user_id: string
+          name: string
+          description: string | null
+          distance: number | null
+          duration: number | null
+          date_completed: string
+          path_data: Json | null
+          plants_found: number
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          name: string
+          description?: string | null
+          distance?: number | null
+          duration?: number | null
+          date_completed?: string
+          path_data?: Json | null
+          plants_found?: number
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          name?: string
+          description?: string | null
+          distance?: number | null
+          duration?: number | null
+          date_completed?: string
+          path_data?: Json | null
+          plants_found?: number
+          created_at?: string
+        }
+      }
+      trail_comments: {
+        Row: {
+          id: string
+          trail_id: string
+          user_id: string
+          content: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          trail_id: string
+          user_id: string
+          content?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          trail_id?: string
+          user_id?: string
+          content?: string | null
+          created_at?: string
+        }
+      }
+      trail_likes: {
+        Row: {
+          id: string
+          trail_id: string
+          user_id: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          trail_id: string
+          user_id: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          trail_id?: string
+          user_id?: string
+          created_at?: string
+        }
+      }
+      saved_trails: {
+        Row: {
+          id: string
+          trail_id: string
+          user_id: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          trail_id: string
+          user_id: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          trail_id?: string
+          user_id?: string
+          created_at?: string
+        }
+      }
+    }
+  }
+}
+
